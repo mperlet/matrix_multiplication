@@ -1,39 +1,45 @@
 #!/bin/bash
 echo "generate test-matrices with python if no test data found"
 echo
+py="python"
+version= python --version | cut -d " " -f 2 | cut -d "." -f 1,2 
+if [ $version >= 2.6 ]; then
+	py="python2"
+fi
+
 if [ ! -f data/mat_5_4.txt ]; then
     echo "generate 5x4 matrix..."
-    python random_float_matrix.py 5 4 > data/mat_5_4.txt
+    $py random_float_matrix.py 5 4 > data/mat_5_4.txt
 fi
 
 if [ ! -f data/mat_4_5.txt ]; then
-    python random_float_matrix.py 4 5 > data/mat_4_5.txt
+    $py random_float_matrix.py 4 5 > data/mat_4_5.txt
 fi
 
 if [ ! -f data/mat_100x100.txt ]; then
     echo "generate 100x100 matrix..."
-    python random_float_matrix.py 100 100 > data/mat_100x100.txt
+    $py random_float_matrix.py 100 100 > data/mat_100x100.txt
 fi
 
 if [ ! -f data/mat_100x100b.txt ]; then
-    python random_float_matrix.py 100 100 > data/mat_100x100b.txt
+    $py random_float_matrix.py 100 100 > data/mat_100x100b.txt
 fi
 
 if [ ! -f data/mat_1000x1000.txt ]; then
     echo "generate 1000x1000 matrix..."
-    python random_float_matrix.py 1000 1000 > data/mat_1000x1000.txt
+    $py random_float_matrix.py 1000 1000 > data/mat_1000x1000.txt
 fi
 if [ ! -f data/mat_1000x1000b.txt ]; then
-    python random_float_matrix.py 1000 1000 > data/mat_1000x1000b.txt
+    $py random_float_matrix.py 1000 1000 > data/mat_1000x1000b.txt
 fi
 
 
 if [ ! -f data/mat_5000x5000a.txt ]; then
     echo "generate 5000x5000 matrix..."
-    python random_float_matrix.py 5000 5000 > data/mat_5000x5000a.txt
+    $py random_float_matrix.py 5000 5000 > data/mat_5000x5000a.txt
 fi
 if [ ! -f data/mat_5000x5000b.txt ]; then
-    python random_float_matrix.py 5000 5000 > data/mat_5000x5000b.txt
+    $py random_float_matrix.py 5000 5000 > data/mat_5000x5000b.txt
 fi
 
 echo "compile..."
